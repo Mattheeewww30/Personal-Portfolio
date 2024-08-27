@@ -13,3 +13,11 @@ menuItems.forEach(item => {
 });
 
 
+const navToggle = document.querySelector(".menu-hamburguesa");
+const navMenu = document.querySelector(".nav-menu");
+
+navToggle.addEventListener("click", () => {
+  navMenu.classList.toggle("nav-menu_visible");
+});
+
+

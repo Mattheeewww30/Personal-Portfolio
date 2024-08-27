@@ -58,41 +58,71 @@ nav a{
     border-bottom: 3px solid transparent;
 }
 
+.nav-menu {
+    display: flex;
+    margin-right: 30px;
+    list-style: none;
+}
+
+.menu-hamburguesa {
+    color: black;
+    background: none;
+    border: none;
+    font-size: 30px;
+    padding: 0 20px;
+    line-height: 60px;
+    cursor: pointer;
+    display: none;
+}
+
 nav a:hover,
 nav a.active{
     border-bottom: 3px solid black;
 }
 
 @media(max-width:995px){
-    nav{
-        position: absolute;
-        display: none;
-        top: 0;
-        right: 0;
-        width: 40%;
-        border-left: 3px solid black;
-        border-bottom: 100px solid black;
-        border-bottom-left-radius: 2rem;
-        padding: 1rem solid;
-        border-top: 0.1rem solid rgba(0,0,0,0.1);
-    }
-
-    nav.active{
-        display: block;
-    }
-
     nav a{
         display: block;
         font-size: 2rem;
         margin: 3rem 0;
+        color: white;
     }
 
     nav a:hover,
     nav a.active{
         padding: 1rem;
         border-radius: 0.5rem;
-        border-bottom: 0.5rem solid black;
+        border-bottom: 0.5rem solid white;
     }
+
+    .nav-menu {
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        background-color: black;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 20px 0;
+    
+        height: 100%;
+        overflow-y: auto;
+    
+        left: 100%;
+        transition: left 0.3s;
+      }
+    
+    .menu-hamburguesa{
+        display: block;
+      }
+    
+    .nav-menu_visible {
+        left: 0;
+    }
+    
+    .menu-hamburguesa:focus:not(:focus-visible) {
+        outline: none;
+      }
 }
 
 section{
@@ -300,6 +330,7 @@ section{
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
+
 }
 .contact-section .contact-item-inner
 {
@@ -308,6 +339,7 @@ section{
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     border-radius: 5px;
     width: 100%;
+    transition: all 0.3s ease;
 }
 .contact-section .contact-item-inner i
 {
@@ -368,6 +400,34 @@ section{
     padding-top: 15px;
     resize: none;
 }
+
+.contact-item-inner:hover{
+    background-color: black
+}
+
+.contact-section .contact-item-inner:hover i
+{
+    font-size: 25px;
+    color: white;
+}
+.contact-section .contact-item-inner:hover span
+{
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    margin: 15px 0 10px;
+    text-transform: capitalize;
+}
+.contact-section .contact-item-inner:hover p
+{
+    font-size: 16px;
+    color: #646f87;
+    line-height: 26px;
+    margin: 0;
+}
+
+
 .contact-section .input-group .input-control:focus
 {
     border: 1px solid black;
@@ -488,10 +548,13 @@ main.row_edu{
 	grid-column-gap: 20px;
 }
 
-.col_edu .title_edu{
+.col_edu .title_edu h3{
 	padding: 0px 0px 20px 30px;
-    font-size: medium;
+    font-size: 40px;
+    font-weight: 600;
+    margin-top: 10px;
 }
+
 
 .col_edu .contents_edu{
 	padding: 0px 30px;
@@ -526,6 +589,10 @@ main.row_edu{
 	border: 2px solid white;
 }
 
+.box_edu{
+    background-color: white;
+}
+
 .box_edu h2{
 	position: relative;
 	color: black;
@@ -542,6 +609,9 @@ main.row_edu{
 	color: #666;
 	font-size: 17px;
 }
+
+
+
 
 @media(max-width: 768px){
 	main.row_edu{
@@ -561,8 +631,6 @@ main.row_edu{
     align-items: center;
     padding-top: 20rem;
 }
-
-
 
 .skills h3 {
     text-align: center;
@@ -631,31 +699,38 @@ main.row_edu{
 
 .right .bars {
     background-color: lightgrey;
-    height: 5px;
+    height: 7px; 
     width: 100%;
     position: relative;
+    border-radius: 5px; 
+    overflow: hidden; 
 }
 
-.right .bars::before {
-    content: '';
-    position: absolute;
+.right .bars .progress {
     height: 100%;
     background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
-.right .html::before {
-    width: 90%;
-}
-
-.right .css::before {
+.right .html .progress {
     width: 70%;
 }
 
-.right .python::before {
-    width: 90%;
+.right .css .progress {
+    width: 40%;
 }
 
-.right .js::before {
+.right .python .progress {
+    width: 70%;
+}
+
+.right .js .progress {
+    width: 40%;
+}
+
+.right .excel .progress {
     width: 80%;
 }
 
@@ -668,12 +743,14 @@ main.row_edu{
     .left, .right {
         width: 100%;
         margin: 0;
-        padding: 0 20px; /* Asegurar un padding en los lados */
+        padding-left: 20px;
+        padding-right: 20px;
+
     }
 
     .right {
         margin-top: 30px;
-        padding-right: 20px; /* Asegura espacio a la derecha */
+        padding-right: 50px;
     }
 
     .skills h1 {
@@ -715,10 +792,6 @@ main.row_edu{
 
     .right .info span {
         font-size: 16px;
-    }
-
-    .right .bars {
-        width: calc(100% - 40px); /* Ajusta el ancho de la barra para respetar los márgenes */
     }
 }
 
