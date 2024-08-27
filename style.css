@@ -748,6 +748,10 @@ main.row_edu{
 
     }
 
+    .section-title{
+        padding-top: 5rem;
+    }
+
     .right {
         margin-top: 30px;
         padding-right: 50px;
@@ -771,13 +775,10 @@ main.row_edu{
     .skills h1 {
         font-size: 30px;
     }
-
-    .left h1 {
-        font-size: 24px;
-    }
-
+    
     .left p {
         font-size: 16px;
+        padding-top: 40rem;
     }
 
     .left a {
