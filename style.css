@@ -443,7 +443,7 @@ section{
 /* Servicios */
 .service-section
 {
-    min-height: 100vh;
+    min-height: 90vh;
     margin-left: 5rem;
     margin-right: 5rem;
 }
@@ -649,12 +649,15 @@ main.row_edu{
     width: 50%;
 }
 
+
+
 .left h1 {
     text-align: left;
     font-size: 30px;
 }
 
 .left p {
+    text-align: start;
     font-size: 18px;
     margin: 25px 0;
 }
